@@ -6,10 +6,13 @@ class HomeController
 {
   
     public function index()
-    {
-        $user = new User;
-      /*   $usuarios = $user->getall(); */
-        /* view('dash', ['user' => $usuarios]); */
+    {     
+        $usuario_logado = [
+          'nome' =>  $_SESSION ['nome_usuario'],
+          'email' => $_SESSION ['email']
+        ];
+
+        view('dash',['user' => $usuario_logado]);
     }
 
 }

@@ -9,9 +9,8 @@
 <body>
 
 <h1>OLÁ MUNDO DIGITAL ESTOU NA VIEW HOME </h1>
-<h1><?php echo $user->nome?></h1>
-<h1><?php echo $user->usuario?></h1>
-<h1><?php echo $user->senha?></h1>
-    
+<h1><?php echo $user['nome']?></h1>
+<h1><?php echo $user['email']?></h1>
+
 </body>
 </html>

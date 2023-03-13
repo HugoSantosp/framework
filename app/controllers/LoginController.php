@@ -17,12 +17,23 @@ class LoginController
 
     public function store()
     {
-        $user = strip_tags($_POST['email']);
+        $usuario = strip_tags($_POST['email']);
         $password = strip_tags($_POST['password']);
-        $user = new User;
-       
 
-var_dump( $user->Autentication($user, $password));
+        $user = new User;
+        $result =  count($user->Autentication($usuario, $password));
+        
+        if($result == 1)
+        {
+            $usuarioloc = $user->GetAllUser($usuario, $password); 
+            $_SESSION ['nome_usuario'] =$usuarioloc->nome;
+            $_SESSION ['email'] = $usuarioloc->email;
+            $_SESSION ['acesso'] = $usuarioloc->acesso;
+            redirect("/dash");
+        }else
+        {
+            redirect("/");
+        }
 
         /* if(count($result) == 1)
         {
