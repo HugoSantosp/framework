@@ -6,13 +6,22 @@ class HomeController
 {
   
     public function index()
-    {     
-        $usuario_logado = [
-          'nome' =>  $_SESSION ['nome_usuario'],
-          'email' => $_SESSION ['email']
-        ];
+    { 
+      if(!isset($_SESSION))
+      {
+          redirect('/');
+      }else{
+        session_start();
 
-        view('dash',['user' => $usuario_logado]);
+        $usuario_logado = [
+         'nome' =>  $_SESSION ['nome_usuario'],
+         'email' => $_SESSION ['email'],
+         'acesso' => $_SESSION['acesso']
+       ];
+
+       view('dash',['user' => $usuario_logado]);
+      }
+   
     }
 
 }

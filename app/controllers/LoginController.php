@@ -17,6 +17,8 @@ class LoginController
 
     public function store()
     {
+        
+
         $usuario = strip_tags($_POST['email']);
         $password = strip_tags($_POST['password']);
 
@@ -25,13 +27,16 @@ class LoginController
         
         if($result == 1)
         {
+            session_start();
             $usuarioloc = $user->GetAllUser($usuario, $password); 
             $_SESSION ['nome_usuario'] =$usuarioloc->nome;
             $_SESSION ['email'] = $usuarioloc->email;
             $_SESSION ['acesso'] = $usuarioloc->acesso;
+            
             redirect("/dash");
-        }else
+        }else 
         {
+        
             redirect("/");
         }
 
@@ -72,8 +77,15 @@ die(); */
             redirect("/dash");
         } 
     */
-      
+ }
 
 
-    }
+        public function logout()
+        {           
+            session_unset();
+            session_destroy();
+
+            redirect('/');
+        }
+
 }

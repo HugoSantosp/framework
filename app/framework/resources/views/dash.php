@@ -11,6 +11,10 @@
 <h1>OLÁ MUNDO DIGITAL ESTOU NA VIEW HOME </h1>
 <h1><?php echo $user['nome']?></h1>
 <h1><?php echo $user['email']?></h1>
+<h1><?php echo $user['acesso']?></h1>
+<a href="/logout">Sair</a>
+
+
 
 </body>
 </html>
